@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Inertia\Inertia;
 
 use App\Models\Listing;
 use Illuminate\Http\Request;
@@ -32,10 +33,12 @@ class ListingController extends Controller
      */
      public function store(Request $request)
      {
-    //     Listing::create($request->all());
-    //     session()->flash('success', 'Listing was Created!');
-    //     dd(session()->all()); // Debugging: Check if 'success' is there
-    //     return redirect()->route('listing.index');
+        Listing::create($request->all());
+         session()->flash('success', 'Listing was Created!');
+        // dd(session()->all()); // Debugging: Check if 'success' is there
+        return Inertia::location(route('listing.index'));
+
+        //dd($request->all());
      }
 
     /**
